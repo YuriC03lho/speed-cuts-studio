@@ -3,18 +3,14 @@ import { Youtube, Instagram } from "lucide-react";
 const socials = [
   {
     name: "YouTube",
-    handle: "@yuricoelho",
-    followers: "48,2 mil",
-    label: "inscritos",
+    handle: "@yuric.edits",
     icon: Youtube,
     href: "#",
     color: "from-ember to-ember-glow",
   },
   {
     name: "Instagram",
-    handle: "@yuri.edits",
-    followers: "32,7 mil",
-    label: "seguidores",
+    handle: "@yuric.edits",
     icon: Instagram,
     href: "#",
     color: "from-peach to-ember",
@@ -39,7 +35,7 @@ export const Social = () => {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-cream/70 max-w-xl mx-auto">
-            Novos cortes, bastidores e reels completos — toda semana.
+            Conecte, mande mensagem e vamos fazer algo memorável.
           </p>
         </div>
 
@@ -69,11 +65,8 @@ export const Social = () => {
                 </div>
 
                 <div className="flex items-end justify-between pt-6 border-t border-cream/10">
-                  <div>
-                    <div className="display-text text-2xl md:text-3xl">{s.followers}</div>
-                    <div className="mono-text text-[10px] uppercase tracking-widest text-cream/40">
-                      {s.label}
-                    </div>
+                  <div className="mono-text text-[10px] uppercase tracking-widest text-cream/40">
+                    Acompanhe
                   </div>
                   <span className="mono-text text-sm text-ember group-hover:translate-x-1 transition-transform inline-block">
                     →
@@ -89,10 +82,10 @@ export const Social = () => {
             Para colaborações
           </p>
           <a
-            href="mailto:hello@yuricoelho.com"
-            className="display-text text-3xl md:text-5xl lg:text-6xl text-cream hover:text-ember transition-colors glitch inline-block"
+            href="mailto:yuricoelhovieira@gmail.com"
+            className="display-text text-3xl md:text-5xl lg:text-6xl text-cream hover:text-ember transition-colors glitch inline-block break-all"
           >
-            hello@yuricoelho.com
+            yuricoelhovieira@gmail.com
           </a>
         </div>
       </div>

@@ -37,9 +37,11 @@ export const About = () => {
 
             <div className="space-y-5 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/80">
               <p>
-                Sou o Yuri — editor de vídeo obcecado por ritmo, cor e a tensão
-                entre o silêncio e o impacto. Meu trabalho mistura narrativa
-                cinematográfica com a energia crua dos edits FPS e do movimento JDM.
+                Sou o Yuri Coelho — editor de vídeo obcecado por ritmo, cor e a
+                tensão entre o silêncio e o impacto. Meu trabalho mistura narrativa
+                cinematográfica com a energia crua focada em direcionar o
+                espectador. Amo ser o que movimenta, o que gira a tensão e o que
+                fornece o foco — dos edits FPS aos vídeos de anúncios.
               </p>
               <p className="text-foreground/60">
                 Cada corte é intencional. Cada frame é um frame que eu assistiria duas vezes.
@@ -48,9 +50,9 @@ export const About = () => {
 
             <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
               {[
-                { n: "120+", l: "Projetos" },
-                { n: "06", l: "Anos" },
-                { n: "04", l: "Prêmios" },
+                { n: "10", l: "Projetos" },
+                { n: "02", l: "Anos" },
+                { n: "—", l: "Prêmios" },
               ].map((s) => (
                 <div key={s.l} className="border-l-2 border-ember pl-4">
                   <div className="display-text text-3xl md:text-4xl">{s.n}</div>
