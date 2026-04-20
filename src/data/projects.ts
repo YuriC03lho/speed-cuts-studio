@@ -64,7 +64,7 @@ export const projects: Project[] = [
   },
   {
     id: "04",
-    title: "Barra Clean Video Teste",
+    title: "Barra Clean",
     cat: "REELS",
     year: "2025",
     img: "https://i.ytimg.com/vi/Mkds88PW6IM/maxresdefault.jpg",

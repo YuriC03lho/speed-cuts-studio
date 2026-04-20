@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Play, X, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -18,6 +18,12 @@ export const Projects = () => {
   const { t } = useTranslation();
   const [active, setActive] = useState<string | null>(null);
   const current = projects.find((p) => p.id === active);
+
+  useEffect(() => {
+    const handleOpenVideo = (e: CustomEvent<string>) => setActive(e.detail);
+    window.addEventListener("open-video", handleOpenVideo as EventListener);
+    return () => window.removeEventListener("open-video", handleOpenVideo as EventListener);
+  }, []);
 
   return (
     <section id="projects" className="relative py-24 md:py-40 bg-cream">

@@ -2,10 +2,10 @@ import { useTranslation } from "react-i18next";
 import { Scissors, Music2, Crosshair, Film } from "lucide-react";
 
 const skills = [
-  { icon: Scissors, name: "Edição", level: 95, desc: "Premiere · CapCut", size: "lg" },
-  { icon: Music2, name: "Sound Design", level: 30, desc: "Foley · SFX · Mix", size: "md" },
-  { icon: Crosshair, name: "GAME EDITS", level: 90, desc: "Sync · Beat drops", size: "lg" },
-  { icon: Film, name: "Storytelling", level: 90, desc: "Ritmo · Narrativa", size: "md" },
+  { icon: Scissors, name: "Edição", level: 95, desc: "Premiere · CapCut", size: "lg", targetId: "03" },
+  { icon: Music2, name: "Sound Design", level: 30, desc: "Foley · SFX · Mix", size: "md", targetId: "05" },
+  { icon: Crosshair, name: "GAME EDITS", level: 90, desc: "Sync · Beat drops", size: "lg", targetId: "01" },
+  { icon: Film, name: "Storytelling", level: 90, desc: "Ritmo · Narrativa", size: "md", targetId: "04" },
 ];
 
 export const Skills = () => {
@@ -47,7 +47,10 @@ export const Skills = () => {
                 className={`${span} reveal group`}
                 style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <div className="relative h-full bg-ink-soft border border-cream/10 p-6 md:p-8 hover:border-ember transition-colors">
+                <div 
+                  className="relative h-full bg-ink-soft border border-cream/10 p-6 md:p-8 hover:border-ember transition-colors cursor-pointer group"
+                  onClick={() => window.dispatchEvent(new CustomEvent("open-video", { detail: s.targetId }))}
+                >
                   <span className="absolute top-0 right-0 w-2 h-2 bg-ember" />
 
                   <div className="flex items-start justify-between mb-6">
