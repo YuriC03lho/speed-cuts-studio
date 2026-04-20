@@ -40,7 +40,7 @@ export const BriefingForm = () => {
   const onSubmit = async (values: BriefingValues) => {
     setLoading(true);
     try {
-      const response = await fetch("https://formspree.io/yuriceditor@gmail.com", {
+      const response = await fetch("https://formspree.io/f/mbdqadez", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
