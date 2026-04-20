@@ -3,49 +3,49 @@ import { useTranslation } from "react-i18next";
 import { Play, X, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
 
-const VideoPlayer = ({ current, isActive, isFirstMount }: { current: any; isActive: boolean; isFirstMount: boolean }) => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+const VideoPlayer = ({ current, isActive }: { current: any; isActive: boolean }) => {
+  const [shouldRenderIframe, setShouldRenderIframe] = useState(isActive);
   
   const { src, type } = useMemo(() => {
     let url = current.videoUrl;
-    const auto = isFirstMount ? 1 : 0;
     const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
-    if (yt) return { src: `https://www.youtube.com/embed/${yt[1]}?autoplay=${auto}&rel=0&enablejsapi=1`, type: "iframe" };
+    if (yt) return { src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0`, type: "iframe" };
     const vimeo = url.match(/vimeo\.com\/(\d+)/);
-    if (vimeo) return { src: `https://player.vimeo.com/video/${vimeo[1]}?autoplay=${auto}&api=1`, type: "iframe" };
+    if (vimeo) return { src: `https://player.vimeo.com/video/${vimeo[1]}?autoplay=1`, type: "iframe" };
     const ig = url.match(/instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/);
     if (ig) return { src: `https://www.instagram.com/p/${ig[1]}/embed/`, type: "iframe" };
     return { src: url, type: "video" };
-  }, [current.videoUrl, isFirstMount]);
+  }, [current.videoUrl]);
 
   useEffect(() => {
-    if (type === "iframe" && iframeRef.current) {
-      const msg = isActive ? 'playVideo' : 'pauseVideo';
-      iframeRef.current.contentWindow?.postMessage(JSON.stringify({ event: 'command', func: msg, args: [] }), '*');
-    } else if (type === "video" && videoRef.current) {
-      if (isActive) videoRef.current.play();
-      else videoRef.current.pause();
+    if (isActive) {
+      if (!shouldRenderIframe) {
+        const timer = setTimeout(() => setShouldRenderIframe(true), 450);
+        return () => clearTimeout(timer);
+      }
+    } else {
+      setShouldRenderIframe(false);
     }
-  }, [isActive, type]);
+  }, [isActive, shouldRenderIframe]);
 
   return (
     <>
-      <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-        {type === "iframe" ? (
-          <iframe
-            ref={iframeRef}
-            src={src}
-            title={current.title}
-            allow="autoplay; encrypted-media; fullscreen"
-            allowFullScreen
-            className="w-full h-full"
-          />
-        ) : (
-          <video ref={videoRef} src={src} controls autoPlay={isFirstMount} className="w-full h-full" />
+      <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${shouldRenderIframe ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+        {shouldRenderIframe && (
+          type === "iframe" ? (
+            <iframe
+              src={src}
+              title={current.title}
+              allow="autoplay; encrypted-media; fullscreen"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          ) : (
+            <video src={src} controls autoPlay className="w-full h-full" />
+          )
         )}
       </div>
-      <div className={`absolute inset-0 flex items-center justify-center bg-ink transition-opacity duration-300 ${!isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+      <div className={`absolute inset-0 flex items-center justify-center bg-ink transition-opacity duration-300 ${!shouldRenderIframe ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
         <img src={current.img} alt={current.title} className="absolute inset-0 w-full h-full object-cover opacity-30" />
         <div className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full bg-cream/95 flex items-center justify-center shadow-warm">
           <Play className="w-7 h-7 md:w-8 md:h-8 text-ink fill-ink ml-1" />
@@ -221,7 +221,7 @@ export const Projects = () => {
                   }`}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <VideoPlayer current={current} isActive={isActive} isFirstMount={index === 0} />
+                  <VideoPlayer current={current} isActive={isActive} />
 
                   {current.originLink && (
                     <a
