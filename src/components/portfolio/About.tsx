@@ -54,7 +54,7 @@ export const About = () => {
 
             <div className="mt-10 grid grid-cols-2 gap-6 max-w-[280px]">
               {[
-                { n: "10", l: t("about.stats.projects") },
+                { n: "05", l: t("about.stats.projects") },
                 { n: "02", l: t("about.stats.years") },
               ].map((s) => (
                 <div key={s.l} className="border-l-2 border-ember pl-4">

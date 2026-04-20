@@ -71,6 +71,9 @@
       "discord": "Discord",
       "telegram": "Telegram",
       "instagram": "Instagram",
+      "rawFilesUrl": "Link dos Arquivos (Brutos)",
+      "rawFilesUrlPlaceholder": "Ex: Link do Google Drive ou Dropbox",
+      "rawFilesUrlHint": "Priorizamos por qualidade o Google Drive. Deixe o link em 'Público'. Se for YouTube, verifique se está como 'Não Listado' e se o link está correto.",
       "help": {
         "videoTitle": "Dê um nome ao seu projeto para facilitar nossa organização.",
         "description": "Conte o máximo de detalhes possível sobre o estilo e objetivo do vídeo.",

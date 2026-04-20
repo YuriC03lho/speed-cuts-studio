@@ -23,6 +23,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "05",
+    title: "VOCÊ SABE COMO ESSE CARA MORREU?",
+    cat: "CINEMATICS",
+    year: "2025",
+    img: "https://i.ytimg.com/vi/nafJ_gAr384/maxresdefault.jpg",
+    runtime: "00:49",
+    videoUrl: "https://youtube.com/shorts/nafJ_gAr384",
+    isVertical: true,
+    featured: true,
+  },
+  {
     id: "01",
     title: "Ｓ　Ｈ　Ｉ　Ｐ",
     cat: "GAME EDITS",
@@ -30,16 +41,6 @@ export const projects: Project[] = [
     img: "https://i.ytimg.com/vi/T1v5EE5IJco/maxresdefault.jpg",
     runtime: "00:58",
     videoUrl: "https://www.youtube.com/watch?v=T1v5EE5IJco",
-    featured: true,
-  },
-  {
-    id: "02",
-    title: "Ｂ　Ｏ　Ｄ　Ｙ　Ｃ　Ａ　Ｍ",
-    cat: "GAME EDITS",
-    year: "2026",
-    img: "https://i.ytimg.com/vi/LyZqeF2iINc/maxresdefault.jpg",
-    runtime: "01:48",
-    videoUrl: "https://www.youtube.com/watch?v=LyZqeF2iINc",
   },
   {
     id: "03",
@@ -52,6 +53,15 @@ export const projects: Project[] = [
     isVertical: true,
   },
   {
+    id: "02",
+    title: "Ｂ　Ｏ　Ｄ　Ｙ　Ｃ　Ａ　Ｍ",
+    cat: "GAME EDITS",
+    year: "2026",
+    img: "https://i.ytimg.com/vi/LyZqeF2iINc/maxresdefault.jpg",
+    runtime: "01:48",
+    videoUrl: "https://www.youtube.com/watch?v=LyZqeF2iINc",
+  },
+  {
     id: "04",
     title: "Barra Clean Video Teste",
     cat: "REELS",
@@ -59,16 +69,6 @@ export const projects: Project[] = [
     img: "https://i.ytimg.com/vi/Mkds88PW6IM/maxresdefault.jpg",
     runtime: "00:24",
     videoUrl: "https://youtu.be/Mkds88PW6IM",
-    isVertical: true,
-  },
-  {
-    id: "05",
-    title: "VOCÊ SABE COMO ESSE CARA MORREU?",
-    cat: "CINEMATICS",
-    year: "2025",
-    img: "https://i.ytimg.com/vi/nafJ_gAr384/maxresdefault.jpg",
-    runtime: "00:49",
-    videoUrl: "https://youtube.com/shorts/nafJ_gAr384",
     isVertical: true,
   },
 ];
