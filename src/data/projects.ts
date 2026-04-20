@@ -68,7 +68,7 @@ export const projects: Project[] = [
     year: "2025",
     img: "https://i.ytimg.com/vi/Mkds88PW6IM/maxresdefault.jpg",
     runtime: "00:24",
-    videoUrl: "https://youtu.be/Mkds88PW6IM",
+    videoUrl: "https://www.instagram.com/reel/DRuY-P4DW4l/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
     isVertical: true,
   },
 ];

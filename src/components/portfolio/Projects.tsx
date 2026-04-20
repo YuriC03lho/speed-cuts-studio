@@ -3,12 +3,14 @@ import { useTranslation } from "react-i18next";
 import { Play, X } from "lucide-react";
 import { projects } from "@/data/projects";
 
-// Converte URLs do YouTube/Vimeo em URL de embed
+// Converte URLs do YouTube/Vimeo/Instagram em URL de embed
 function toEmbed(url: string): { src: string; type: "iframe" | "video" } {
   const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
   if (yt) return { src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0`, type: "iframe" };
   const vimeo = url.match(/vimeo\.com\/(\d+)/);
   if (vimeo) return { src: `https://player.vimeo.com/video/${vimeo[1]}?autoplay=1`, type: "iframe" };
+  const ig = url.match(/instagram\.com\/(?:p|reel)\/([A-Za-z0-9_-]+)/);
+  if (ig) return { src: `https://www.instagram.com/p/${ig[1]}/embed/`, type: "iframe" };
   return { src: url, type: "video" };
 }
 
