@@ -150,13 +150,13 @@ export const Projects = () => {
       {/* Lightbox */}
       {currentList.length > 0 && (
         <div
-          className="fixed inset-0 z-[200] bg-ink/95 backdrop-blur-sm animate-fade-in-up overflow-y-auto overflow-x-hidden snap-y snap-mandatory"
+          className="fixed inset-0 z-[200] bg-ink animate-fade-in-up overflow-y-auto overflow-x-hidden snap-y snap-mandatory"
           onClick={() => setActive(null)}
         >
           <button
             onClick={() => setActive(null)}
             aria-label="Fechar"
-            className="fixed top-4 right-4 md:top-6 md:right-6 w-12 h-12 border-2 border-cream text-cream flex items-center justify-center hover:bg-ember hover:border-ember transition-colors z-[210] bg-ink/50 backdrop-blur-sm"
+            className="fixed top-4 right-4 md:top-6 md:right-6 w-12 h-12 border-2 border-cream text-cream flex items-center justify-center hover:bg-ember hover:border-ember transition-colors z-[210] bg-ink"
           >
             <X className="w-5 h-5" />
           </button>
@@ -209,7 +209,7 @@ export const Projects = () => {
                       href={current.originLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink/80 backdrop-blur-sm border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
+                      className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
                     >
                       <ExternalLink className="w-3 h-3" />
                       <span>Ver Original</span>
