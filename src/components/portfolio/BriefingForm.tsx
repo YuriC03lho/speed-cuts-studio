@@ -380,13 +380,10 @@ export const BriefingForm = () => {
                   </Button>
                 </div>
               </form>
-            </form>
+            </Form>
           </TooltipProvider>
         </div>
       </div>
     </section>
-  );
-};
-ction>
   );
 };
