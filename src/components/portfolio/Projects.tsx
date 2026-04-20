@@ -100,12 +100,6 @@ export const Projects = () => {
           })}
         </div>
 
-        <div className="mt-16 flex justify-center reveal">
-          <a href="#social" className="btn-brutal">
-            <span>{t("projects.fullReel")}</span>
-            <span className="text-ember">→</span>
-          </a>
-        </div>
       </div>
 
       {/* Lightbox */}
