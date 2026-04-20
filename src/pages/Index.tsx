@@ -5,6 +5,7 @@ import { Marquee } from "@/components/portfolio/Marquee";
 import { About } from "@/components/portfolio/About";
 import { Skills } from "@/components/portfolio/Skills";
 import { Projects } from "@/components/portfolio/Projects";
+import { BriefingForm } from "@/components/portfolio/BriefingForm";
 import { Social } from "@/components/portfolio/Social";
 import { Footer } from "@/components/portfolio/Footer";
 import { useReveal } from "@/hooks/use-reveal";
@@ -37,6 +38,7 @@ const Index = () => {
       />
       <Skills />
       <Projects />
+      <BriefingForm />
       <Marquee
         items={["Disponível", "Aberto a colabs", "Contrate", "Vamos criar", "@yuriceditor"]}
         variant="dark"

@@ -4,8 +4,9 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
-    "social": "Connect",
-    "reels": "REELS"
+    "social": "Contact",
+    "briefing": "Briefing",
+    "reels": "WATCH REELS"
   },
   "hero": {
     "playing": "Now playing",
@@ -49,5 +50,26 @@
     "tagline": "Connect, send a message and let's make something memorable.",
     "contact": "For collaborations",
     "follow": "Follow"
+  },
+  "briefing": {
+    "section": "06 // Project Briefing",
+    "title": "Start your",
+    "titleHighlight": "project.",
+    "tagline": "Fill in the details and receive a personalized quote in your email.",
+    "fields": {
+      "videoTitle": "Video Title",
+      "videoTitlePlaceholder": "Ex: Cinematic Gaming Reel",
+      "description": "Project Description",
+      "descriptionPlaceholder": "Tell us a bit about the style and objective of the video...",
+      "rawMinutes": "Raw Minutes (Estimate)",
+      "rawMinutesPlaceholder": "Ex: 30",
+      "targetDuration": "Desired Final Duration (Seconds)",
+      "targetDurationPlaceholder": "Ex: 60",
+      "otherContact": "Other forms of contact?",
+      "otherContactPlaceholder": "WhatsApp, Discord or Telegram..."
+    },
+    "submit": "SEND BRIEFING",
+    "sending": "SENDING...",
+    "success": "Briefing sent successfully!"
   }
 }

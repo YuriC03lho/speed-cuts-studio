@@ -11,6 +11,7 @@ export const Nav = () => {
     { label: t("nav.about"), href: "#about" },
     { label: t("nav.skills"), href: "#skills" },
     { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.briefing"), href: "#briefing" },
     { label: t("nav.social"), href: "#social" },
   ];
 
