@@ -1,16 +1,53 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect } from "react";
+import { Nav } from "@/components/portfolio/Nav";
+import { Hero } from "@/components/portfolio/Hero";
+import { Marquee } from "@/components/portfolio/Marquee";
+import { About } from "@/components/portfolio/About";
+import { Skills } from "@/components/portfolio/Skills";
+import { Projects } from "@/components/portfolio/Projects";
+import { Social } from "@/components/portfolio/Social";
+import { Footer } from "@/components/portfolio/Footer";
+import { useReveal } from "@/hooks/use-reveal";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  useReveal();
+
+  useEffect(() => {
+    document.title = "Yuri Coelho — Video Editor · Portfolio";
+    const meta =
+      document.querySelector('meta[name="description"]') ||
+      Object.assign(document.createElement("meta"), { name: "description" });
+    meta.setAttribute(
+      "content",
+      "Yuri Coelho — Video editor portfolio. Cinematic edits, FPS montages, motion graphics, sound design and color grading."
+    );
+    if (!meta.parentElement) document.head.appendChild(meta);
+  }, []);
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main className="bg-background text-foreground">
+      <Nav />
+      <Hero />
+      <Marquee
+        items={["Drift", "Cut", "Grade", "Sound", "Motion", "Story", "Velocity"]}
+        variant="ember"
+      />
+      <About />
+      <Marquee
+        items={["FPS Edits", "JDM Cinema", "Commercial", "Music Video", "Brand Films"]}
+        reverse
+        variant="default"
+      />
+      <Skills />
+      <Projects />
+      <Marquee
+        items={["Available 2025", "Open for collabs", "Hire", "Let's create", "@yuri.edits"]}
+        variant="dark"
+      />
+      <Social />
+      <Footer />
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
