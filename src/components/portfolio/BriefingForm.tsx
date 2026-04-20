@@ -118,7 +118,7 @@ export const BriefingForm = () => {
         </div>
 
         <div className="bg-ink p-8 md:p-12 shadow-brutal border-2 border-ink reveal">
-          <TooltipProvider>
+          <TooltipProvider delayDuration={200}>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

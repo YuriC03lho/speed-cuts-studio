@@ -18,6 +18,7 @@ export interface Project {
   img: string;
   videoUrl: string;
   featured?: boolean;
+  isVertical?: boolean;
 }
 
 export const projects: Project[] = [
@@ -25,9 +26,9 @@ export const projects: Project[] = [
     id: "01",
     title: "Ｓ　Ｈ　Ｉ　Ｐ",
     cat: "GAME EDITS",
-    year: "2025",
+    year: "2026",
     img: "https://i.ytimg.com/vi/T1v5EE5IJco/maxresdefault.jpg",
-    runtime: "01:24",
+    runtime: "00:58",
     videoUrl: "https://www.youtube.com/watch?v=T1v5EE5IJco",
     featured: true,
   },
@@ -35,9 +36,9 @@ export const projects: Project[] = [
     id: "02",
     title: "Ｂ　Ｏ　Ｄ　Ｙ　Ｃ　Ａ　Ｍ",
     cat: "GAME EDITS",
-    year: "2025",
+    year: "2026",
     img: "https://i.ytimg.com/vi/LyZqeF2iINc/maxresdefault.jpg",
-    runtime: "01:10",
+    runtime: "01:48",
     videoUrl: "https://www.youtube.com/watch?v=LyZqeF2iINc",
   },
   {
@@ -46,25 +47,28 @@ export const projects: Project[] = [
     cat: "GAMEPLAYS",
     year: "2025",
     img: "https://i.ytimg.com/vi/CUE7iz59-Wk/maxresdefault.jpg",
-    runtime: "00:45",
+    runtime: "00:34",
     videoUrl: "https://youtu.be/CUE7iz59-Wk",
+    isVertical: true,
   },
   {
     id: "04",
     title: "Barra Clean Video Teste",
     cat: "REELS",
-    year: "2024",
+    year: "2025",
     img: "https://i.ytimg.com/vi/Mkds88PW6IM/maxresdefault.jpg",
-    runtime: "00:30",
+    runtime: "00:24",
     videoUrl: "https://youtu.be/Mkds88PW6IM",
+    isVertical: true,
   },
   {
     id: "05",
     title: "VOCÊ SABE COMO ESSE CARA MORREU?",
     cat: "CINEMATICS",
-    year: "2024",
+    year: "2025",
     img: "https://i.ytimg.com/vi/nafJ_gAr384/maxresdefault.jpg",
-    runtime: "00:59",
+    runtime: "00:49",
     videoUrl: "https://youtube.com/shorts/nafJ_gAr384",
+    isVertical: true,
   },
 ];

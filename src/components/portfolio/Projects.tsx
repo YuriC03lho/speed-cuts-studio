@@ -120,7 +120,11 @@ export const Projects = () => {
             <X className="w-5 h-5" />
           </button>
           <div
-            className="relative w-full max-w-6xl aspect-video bg-black"
+            className={`relative w-full transition-all duration-500 bg-black ${
+              current.isVertical 
+                ? "max-w-[420px] aspect-[9/16]" 
+                : "max-w-6xl aspect-video"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {(() => {
@@ -137,7 +141,7 @@ export const Projects = () => {
                 <video src={src} controls autoPlay className="w-full h-full" />
               );
             })()}
-            <div className="absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70">
+            <div className={`absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70 ${current.isVertical ? 'px-4' : ''}`}>
               <span>
                 <span className="text-ember">/ {current.id}</span> · {current.title}
               </span>

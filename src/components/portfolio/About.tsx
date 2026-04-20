@@ -40,7 +40,15 @@ export const About = () => {
             </h2>
 
             <div className="space-y-5 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/80">
-              <p>{t("about.p1")}</p>
+              <p>
+                {t("about.p1").split(/(Iniciante|Beginner)/).map((part, i) => 
+                  part === "Iniciante" || part === "Beginner" ? (
+                    <span key={i} className="text-ember font-bold">{part}</span>
+                  ) : (
+                    part
+                  )
+                )}
+              </p>
               <p className="text-foreground/60">{t("about.p2")}</p>
             </div>
 
