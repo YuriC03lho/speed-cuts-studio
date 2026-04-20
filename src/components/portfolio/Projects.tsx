@@ -191,7 +191,7 @@ export const Projects = () => {
       {/* Lightbox */}
       {currentList.length > 0 && (
         <div
-          className="fixed inset-0 z-[200] bg-ink animate-fade-in-up flex items-center justify-center p-4 md:p-10"
+          className="fixed inset-0 z-[200] bg-ink/80 backdrop-blur-md animate-fade-in-up flex items-center justify-center p-4 md:p-10"
           onClick={() => setActive(null)}
         >
           {/* Close Button */}
