@@ -86,7 +86,7 @@ export const Social = () => {
             {t("social.contact")}
           </p>
           <a
-            href="mailto:yuriceditor@gmail.com?subject=Edição de Vídeo&body=Olá Yuri, vi seu portfólio e gostaria de conversar sobre um projeto."
+            href="mailto:yuriceditor@gmail.com?subject=Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeo&body=Ol%C3%A1%20Yuri%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
             className="display-text text-3xl md:text-5xl lg:text-6xl text-cream hover:text-ember transition-colors glitch inline-block break-all"
           >
             yuriceditor@gmail.com
