@@ -62,7 +62,7 @@ export const Hero = () => {
                 {t("hero.role")}
               </p>
               <p className="mt-2 mono-text text-xs uppercase tracking-widest text-cream/50">
-                Sound Design · Cortes · RITMO
+                {t("hero.marquee")}
               </p>
             </div>
 

@@ -15,7 +15,8 @@
     "role": "Editor de Vídeo",
     "viewProjects": "Ver Projetos",
     "aboutMe": "Sobre mim",
-    "tagline": "Editor cinematográfico focado em ritmo, energia e narrativa marcante."
+    "tagline": "Editor cinematográfico focado em ritmo, energia e narrativa marcante.",
+    "marquee": "Sound Design · Cortes · RITMO"
   },
   "about": {
     "section": "02 // Sobre Mim",
@@ -31,14 +32,14 @@
   "skills": {
     "section": "03 // Skills · Toolkit",
     "title": "Feito para",
-    "titleHighlight": "velocidade.",
+    "titleHighlight": "Sentir.",
     "tagline": "Quatro disciplinas, uma assinatura. Cada projeto é um exercício de ritmo.",
     "mastery": "Domínio"
   },
   "projects": {
     "section": "04 // Trabalhos Selecionados",
-    "title": "O reel",
-    "titleHighlight": "em movimento.",
+    "title": "O que tenho",
+    "titleHighlight": "Feito?",
     "tagline": "06 projetos · 2025 — 2026",
     "watch": "ASSISTIR",
     "fullReel": "Reel completo no YouTube"
