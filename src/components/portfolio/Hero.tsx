@@ -30,10 +30,10 @@ export const Hero = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 mono-text text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/70">
           <div className="flex items-center gap-3">
             <span className="rec-dot" />
-            <span>Tocando agora — Reel 2025</span>
+            <span>Tocando agora — Reel 25 — 26</span>
           </div>
           <div className="hidden sm:flex items-center gap-6">
-            <span>São Paulo · BR</span>
+            <span>Vila Velha · ES</span>
             <span className="text-ember">●</span>
             <span>Disponível para projetos</span>
           </div>

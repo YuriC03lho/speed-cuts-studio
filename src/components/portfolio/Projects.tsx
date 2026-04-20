@@ -32,7 +32,7 @@ export const Projects = () => {
           </div>
           <div className="mono-text text-xs uppercase tracking-widest text-foreground/60 flex items-center gap-3">
             <span className="rec-dot" />
-            <span>06 projetos · 2023 — 2025</span>
+            <span>06 projetos · 2025 — 2026</span>
           </div>
         </div>
 

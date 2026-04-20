@@ -1,12 +1,10 @@
-import { Scissors, Music2, Palette, Wand2, Crosshair, Film } from "lucide-react";
+import { Scissors, Music2, Crosshair, Film } from "lucide-react";
 
 const skills = [
   { icon: Scissors, name: "Edição", level: 95, desc: "Premiere · DaVinci · CapCut", size: "lg" },
-  { icon: Palette, name: "Color Grading", level: 90, desc: "DaVinci Resolve", size: "md" },
-  { icon: Music2, name: "Sound Design", level: 85, desc: "Foley · SFX · Mix", size: "md" },
-  { icon: Wand2, name: "Motion Graphics", level: 80, desc: "After Effects", size: "md" },
-  { icon: Crosshair, name: "Edits FPS", level: 92, desc: "Sync · Beat drops · VFX", size: "lg" },
-  { icon: Film, name: "Storytelling", level: 88, desc: "Ritmo · Narrativa", size: "md" },
+  { icon: Music2, name: "Sound Design", level: 30, desc: "Foley · SFX · Mix", size: "md" },
+  { icon: Crosshair, name: "Edição de Edits", level: 90, desc: "Sync · Beat drops · VFX", size: "lg" },
+  { icon: Film, name: "Storytelling", level: 90, desc: "Ritmo · Narrativa", size: "md" },
 ];
 
 export const Skills = () => {
@@ -29,7 +27,7 @@ export const Skills = () => {
             </h2>
           </div>
           <p className="mono-text text-xs uppercase tracking-widest text-cream/50 max-w-xs">
-            Seis disciplinas, uma assinatura. Cada projeto é um exercício de ritmo.
+            Quatro disciplinas, uma assinatura. Cada projeto é um exercício de ritmo.
           </p>
         </div>
 
