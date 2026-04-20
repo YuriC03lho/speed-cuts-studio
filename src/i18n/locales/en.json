@@ -63,8 +63,8 @@
       "descriptionPlaceholder": "Tell us a bit about the style and objective of the video...",
       "rawMinutes": "Raw Minutes (Estimate)",
       "rawMinutesPlaceholder": "Ex: 30",
-      "targetDuration": "Desired Final Duration (Seconds)",
-      "targetDurationPlaceholder": "Ex: 60",
+      "targetDuration": "Desired Final Duration (Minutes)",
+      "targetDurationPlaceholder": "Ex: 10",
       "otherContact": "Other forms of contact?",
       "otherContactPlaceholder": "WhatsApp, Discord or Telegram..."
     },

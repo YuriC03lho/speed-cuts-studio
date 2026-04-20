@@ -63,8 +63,8 @@
       "descriptionPlaceholder": "Conte um pouco sobre o estilo e objetivo do vídeo...",
       "rawMinutes": "Minutos Brutos (Estimativa)",
       "rawMinutesPlaceholder": "Ex: 30",
-      "targetDuration": "Duração Final Desejada (Segundos)",
-      "targetDurationPlaceholder": "Ex: 60",
+      "targetDuration": "Duração Final Desejada (Minutos)",
+      "targetDurationPlaceholder": "Ex: 10",
       "otherContact": "Outras formas de contato?",
       "otherContactPlaceholder": "WhatsApp, Discord ou Telegram..."
     },
