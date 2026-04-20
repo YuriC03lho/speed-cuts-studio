@@ -54,7 +54,11 @@ export const Projects = () => {
                 style={{ transitionDelay: `${i * 70}ms` }}
                 onClick={() => setActive(p.id)}
               >
-                <div className="relative overflow-hidden bg-ink aspect-[4/3] md:aspect-[16/10]">
+                <div className={`relative overflow-hidden bg-ink ${
+                  p.isVertical && !p.featured 
+                    ? "aspect-[9/16]" 
+                    : "aspect-[4/3] md:aspect-[16/10]"
+                }`}>
                   <img
                     src={p.img}
                     alt={p.title}

@@ -17,7 +17,7 @@ const briefingSchema = z.object({
   description: z.string().min(10, { message: "Conte um pouco mais sobre o projeto" }),
   rawMinutes: z.string().min(1, { message: "Informe a duração bruta" }),
   targetDuration: z.string().min(1, { message: "Informe a duração desejada" }),
-  rawFilesUrl: z.string().url({ message: "Informe um link válido" }).optional().or(z.literal("")),
+  rawFilesUrl: z.string().url({ message: "O link dos arquivos é obrigatório" }),
   hasOtherContact: z.boolean().default(false),
   phone: z.string().optional(),
   discord: z.string().optional(),
@@ -257,32 +257,6 @@ export const BriefingForm = () => {
                     />
                   </div>
 
-                  {/* Link dos Arquivos */}
-                  <div className="col-span-1 md:col-span-2">
-                    <FormField
-                      control={form.control}
-                      name="rawFilesUrl"
-                      render={({ field }) => (
-                        <FormItem className="space-y-3">
-                          <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
-                            {t("briefing.fields.rawFilesUrl")}
-                          </FormLabel>
-                          <FormControl>
-                            <Input 
-                              onFocus={playClick}
-                              placeholder={t("briefing.fields.rawFilesUrlPlaceholder")} 
-                              className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
-                              {...field} 
-                            />
-                          </FormControl>
-                          <p className="text-[10px] mono-text text-ember/80 mt-2 uppercase tracking-tighter italic">
-                            {t("briefing.fields.rawFilesUrlHint")}
-                          </p>
-                          <FormMessage className="text-ember text-[10px] uppercase" />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
                 </div>
 
                 {/* Conditional Optional Fields */}
@@ -364,6 +338,7 @@ export const BriefingForm = () => {
                 )}
 
                 {/* Descrição */}
+                {/* Descrição */}
                 <FormField
                   control={form.control}
                   name="description"
@@ -390,6 +365,31 @@ export const BriefingForm = () => {
                           {...field} 
                         />
                       </FormControl>
+                      <FormMessage className="text-ember text-[10px] uppercase" />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Link dos Arquivos */}
+                <FormField
+                  control={form.control}
+                  name="rawFilesUrl"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
+                        {t("briefing.fields.rawFilesUrl")}
+                      </FormLabel>
+                      <FormControl>
+                        <Input 
+                          onFocus={playClick}
+                          placeholder={t("briefing.fields.rawFilesUrlPlaceholder")} 
+                          className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <p className="text-[10px] mono-text text-ember/80 mt-2 uppercase tracking-tighter">
+                        {t("briefing.fields.rawFilesUrlHint")}
+                      </p>
                       <FormMessage className="text-ember text-[10px] uppercase" />
                     </FormItem>
                   )}
