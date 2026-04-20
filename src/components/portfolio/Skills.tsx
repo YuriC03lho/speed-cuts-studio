@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Scissors, Music2, Crosshair, Film } from "lucide-react";
 
@@ -10,6 +11,21 @@ const skills = [
 
 export const Skills = () => {
   const { t } = useTranslation();
+  // Tracks the last opened video ID per skill index to avoid immediate repetition
+  const lastPicked = useRef<Record<number, string>>({});
+
+  const pickVideo = (index: number, targetId: string) => {
+    const ids = targetId.split(',');
+    if (ids.length === 1) {
+      window.dispatchEvent(new CustomEvent("open-video", { detail: ids[0] }));
+      return;
+    }
+    const previous = lastPicked.current[index];
+    const candidates = ids.filter(id => id !== previous);
+    const picked = candidates[Math.floor(Math.random() * candidates.length)];
+    lastPicked.current[index] = picked;
+    window.dispatchEvent(new CustomEvent("open-video", { detail: picked }));
+  };
 
   return (
     <section id="skills" className="relative py-24 md:py-40 bg-ink text-cream overflow-hidden">
@@ -49,7 +65,7 @@ export const Skills = () => {
               >
                 <div 
                   className="relative h-full bg-ink-soft border border-cream/10 p-6 md:p-8 hover:border-ember transition-colors cursor-pointer group"
-                  onClick={() => window.dispatchEvent(new CustomEvent("open-video", { detail: s.targetId }))}
+                  onClick={() => pickVideo(i, s.targetId)}
                 >
                   <span className="absolute top-0 right-0 w-2 h-2 bg-ember" />
 
