@@ -16,11 +16,22 @@ function toEmbed(url: string): { src: string; type: "iframe" | "video" } {
 
 export const Projects = () => {
   const { t } = useTranslation();
-  const [active, setActive] = useState<string | null>(null);
-  const current = projects.find((p) => p.id === active);
+  const [active, setActive] = useState<string | string[] | null>(null);
+
+  const currentList = Array.isArray(active) 
+    ? active.map(id => projects.find(p => p.id === id)).filter(Boolean) as typeof projects
+    : active 
+      ? [projects.find(p => p.id === active)].filter(Boolean) as typeof projects 
+      : [];
 
   useEffect(() => {
-    const handleOpenVideo = (e: CustomEvent<string>) => setActive(e.detail);
+    const handleOpenVideo = (e: CustomEvent<string>) => {
+      if (e.detail.includes(',')) {
+        setActive(e.detail.split(','));
+      } else {
+        setActive(e.detail);
+      }
+    };
     window.addEventListener("open-video", handleOpenVideo as EventListener);
     return () => window.removeEventListener("open-video", handleOpenVideo as EventListener);
   }, []);
@@ -109,59 +120,76 @@ export const Projects = () => {
       </div>
 
       {/* Lightbox */}
-      {current && (
+      {currentList.length > 0 && (
         <div
-          className="fixed inset-0 z-[200] bg-ink/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10 animate-fade-in-up"
+          className="fixed inset-0 z-[200] bg-ink/95 backdrop-blur-sm animate-fade-in-up overflow-y-auto overflow-x-hidden snap-y snap-mandatory"
           onClick={() => setActive(null)}
         >
           <button
             onClick={() => setActive(null)}
             aria-label="Fechar"
-            className="absolute top-4 right-4 md:top-6 md:right-6 w-12 h-12 border-2 border-cream text-cream flex items-center justify-center hover:bg-ember hover:border-ember transition-colors z-10"
+            className="fixed top-4 right-4 md:top-6 md:right-6 w-12 h-12 border-2 border-cream text-cream flex items-center justify-center hover:bg-ember hover:border-ember transition-colors z-[210] bg-ink/50 backdrop-blur-sm"
           >
             <X className="w-5 h-5" />
           </button>
-          <div
-            className={`relative w-full transition-all duration-500 bg-black ${
-              current.isVertical 
-                ? "max-w-[420px] aspect-[9/16]" 
-                : "max-w-6xl aspect-video"
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {(() => {
-              const { src, type } = toEmbed(current.videoUrl);
-              return type === "iframe" ? (
-                <iframe
-                  src={src}
-                  title={current.title}
-                  allow="autoplay; encrypted-media; fullscreen"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
-              ) : (
-                <video src={src} controls autoPlay className="w-full h-full" />
-              );
-            })()}
-
-            {current.originLink && (
-              <a
-                href={current.originLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink/80 backdrop-blur-sm border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
+          
+          <div className="flex flex-col w-full min-h-screen">
+            {currentList.map((current, index) => (
+              <div 
+                key={current.id + index}
+                className="w-full min-h-[100dvh] snap-center snap-always flex items-center justify-center flex-shrink-0 p-4 md:p-10 relative"
+                onClick={() => setActive(null)}
               >
-                <ExternalLink className="w-3 h-3" />
-                <span>Ver Original</span>
-              </a>
-            )}
+                <div
+                  className={`relative w-full transition-all duration-500 bg-black ${
+                    current.isVertical 
+                      ? "max-w-[420px] aspect-[9/16]" 
+                      : "max-w-6xl aspect-video"
+                  }`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {(() => {
+                    const { src, type } = toEmbed(current.videoUrl);
+                    return type === "iframe" ? (
+                      <iframe
+                        src={src}
+                        title={current.title}
+                        allow="autoplay; encrypted-media; fullscreen"
+                        allowFullScreen
+                        className="w-full h-full"
+                      />
+                    ) : (
+                      <video src={src} controls autoPlay className="w-full h-full" />
+                    );
+                  })()}
 
-            <div className={`absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70 ${current.isVertical ? 'px-4' : ''}`}>
-              <span>
-                <span className="text-ember">/ {current.id}</span> · {current.title}
-              </span>
-              <span>{current.cat} · {current.year} · {current.runtime}</span>
-            </div>
+                  {current.originLink && (
+                    <a
+                      href={current.originLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink/80 backdrop-blur-sm border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>Ver Original</span>
+                    </a>
+                  )}
+
+                  <div className={`absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70 ${current.isVertical ? 'px-4' : ''}`}>
+                    <span>
+                      <span className="text-ember">/ {current.id}</span> · {current.title}
+                    </span>
+                    <span>{current.cat} · {current.year} · {current.runtime}</span>
+                  </div>
+                </div>
+                
+                {currentList.length > 1 && index < currentList.length - 1 && (
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 mono-text text-[10px] uppercase tracking-widest text-cream/40 animate-pulse">
+                    ↓ Role para o próximo vídeo
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       )}
