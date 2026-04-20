@@ -39,14 +39,14 @@ export const Projects = () => {
           </div>
         </div>
 
-        {/* Grid */}
+        {/* Grid: 2 on top, 3 below */}
         <div className="grid grid-cols-12 gap-4 md:gap-6">
           {projects.map((p, i) => {
-            const span = p.featured
-              ? "col-span-12 md:col-span-8"
-              : i === 0
-              ? "col-span-12 md:col-span-4"
+            // First 2: col-span-6 | Next 3: col-span-4
+            const span = i < 2 
+              ? "col-span-12 md:col-span-6" 
               : "col-span-12 sm:col-span-6 md:col-span-4";
+            
             return (
               <article
                 key={p.id}
@@ -54,11 +54,7 @@ export const Projects = () => {
                 style={{ transitionDelay: `${i * 70}ms` }}
                 onClick={() => setActive(p.id)}
               >
-                <div className={`relative overflow-hidden bg-ink ${
-                  p.isVertical && !p.featured 
-                    ? "aspect-[9/16]" 
-                    : "aspect-[4/3] md:aspect-[16/10]"
-                }`}>
+                <div className="relative overflow-hidden bg-ink aspect-[4/3] md:aspect-[16/10]">
                   <img
                     src={p.img}
                     alt={p.title}
