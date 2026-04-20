@@ -1,20 +1,13 @@
 // =============================================================
 // EDITE AQUI os seus projetos de vídeo.
 // - title: nome do projeto
-// - cat: categoria (ex: Edit FPS, JDM, Comercial)
+// - cat: categoria (ex: GAME EDITS, CINEMATICS, GAMEPLAYS)
 // - year: ano
 // - runtime: duração no formato mm:ss
 // - img: thumbnail (importe de src/assets ou use uma URL)
 // - videoUrl: link do YouTube, Vimeo ou MP4 direto (abre ao clicar)
 // - featured: true para ocupar 2 colunas no grid
 // =============================================================
-
-import fps1 from "@/assets/project-fps-1.jpg";
-import fps2 from "@/assets/project-fps-2.jpg";
-import drift from "@/assets/project-drift.jpg";
-import commercial from "@/assets/project-commercial.jpg";
-import music from "@/assets/project-music.jpg";
-import travel from "@/assets/project-travel.jpg";
 
 export interface Project {
   id: string;
@@ -30,57 +23,48 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "01",
-    title: "Apex Velocity",
-    cat: "Edit FPS",
+    title: "Ｓ　Ｈ　Ｉ　Ｐ",
+    cat: "GAME EDITS",
     year: "2025",
-    img: fps1,
-    runtime: "01:48",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    img: "https://i.ytimg.com/vi/T1v5EE5IJco/maxresdefault.jpg",
+    runtime: "01:24",
+    videoUrl: "https://www.youtube.com/watch?v=T1v5EE5IJco",
+    featured: true,
   },
   {
     id: "02",
-    title: "Tokyo Drift Nights",
-    cat: "JDM",
+    title: "Ｂ　Ｏ　Ｄ　Ｙ　Ｃ　Ａ　Ｍ",
+    cat: "GAME EDITS",
     year: "2025",
-    img: drift,
-    runtime: "02:34",
-    featured: true,
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    img: "https://i.ytimg.com/vi/LyZqeF2iINc/maxresdefault.jpg",
+    runtime: "01:10",
+    videoUrl: "https://www.youtube.com/watch?v=LyZqeF2iINc",
   },
   {
     id: "03",
-    title: "Optic Vol. III",
-    cat: "Comercial",
-    year: "2024",
-    img: commercial,
+    title: "atirando em aviões com caça tanque",
+    cat: "GAMEPLAYS",
+    year: "2025",
+    img: "https://i.ytimg.com/vi/CUE7iz59-Wk/maxresdefault.jpg",
     runtime: "00:45",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    videoUrl: "https://youtu.be/CUE7iz59-Wk",
   },
   {
     id: "04",
-    title: "Smoke & Iron",
-    cat: "Edit FPS",
+    title: "Barra Clean Video Teste",
+    cat: "REELS",
     year: "2024",
-    img: fps2,
-    runtime: "01:22",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    img: "https://i.ytimg.com/vi/Mkds88PW6IM/maxresdefault.jpg",
+    runtime: "00:30",
+    videoUrl: "https://youtu.be/Mkds88PW6IM",
   },
   {
     id: "05",
-    title: "Echoes In Motion",
-    cat: "Videoclipe",
+    title: "VOCÊ SABE COMO ESSE CARA MORREU?",
+    cat: "CINEMATICS",
     year: "2024",
-    img: music,
-    runtime: "03:12",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  },
-  {
-    id: "06",
-    title: "Mountain Run",
-    cat: "Travel",
-    year: "2023",
-    img: travel,
-    runtime: "02:00",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    img: "https://i.ytimg.com/vi/nafJ_gAr384/maxresdefault.jpg",
+    runtime: "00:59",
+    videoUrl: "https://youtube.com/shorts/nafJ_gAr384",
   },
 ];

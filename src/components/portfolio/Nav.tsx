@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
-
-const links = [
-  { label: "Início", href: "#home" },
-  { label: "Sobre", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projetos", href: "#projects" },
-  { label: "Redes", href: "#social" },
-];
+import { useTranslation } from "react-i18next";
 
 export const Nav = () => {
+  const { t, i18n } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const links = [
+    { label: t("nav.home"), href: "#home" },
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.projects"), href: "#projects" },
+    { label: t("nav.social"), href: "#social" },
+  ];
+
+  const toggleLanguage = () => {
+    const nextLang = i18n.language.startsWith("pt") ? "en" : "pt";
+    i18n.changeLanguage(nextLang);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -52,23 +59,32 @@ export const Nav = () => {
           ))}
         </nav>
 
-        <a
-          href="#projects"
-          className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-cream text-ink mono-text text-xs uppercase tracking-widest border-2 border-cream hover:bg-ember hover:text-cream hover:border-ember transition-colors shadow-brutal-sm"
-        >
-          <span>Reel 25 — 26</span>
-          <span className="text-ember group-hover:text-cream">→</span>
-        </a>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={toggleLanguage}
+            className="mono-text text-[10px] uppercase tracking-widest text-cream/60 hover:text-ember transition-colors border border-cream/20 px-2 py-1"
+          >
+            {i18n.language === "pt" ? "EN" : "PT"}
+          </button>
 
-        <button
-          onClick={() => setOpen(!open)}
-          aria-label="Menu"
-          className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 border-2 border-cream text-cream"
-        >
-          <span className={`block w-5 h-0.5 bg-cream transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-cream transition-opacity ${open ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-0.5 bg-cream transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
-        </button>
+          <a
+            href="#projects"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-cream text-ink mono-text text-xs uppercase tracking-widest border-2 border-cream hover:bg-ember hover:text-cream hover:border-ember transition-colors shadow-brutal-sm"
+          >
+            <span>{t("nav.reels")}</span>
+            <span className="text-ember group-hover:text-cream">→</span>
+          </a>
+
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label="Menu"
+            className="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 border-2 border-cream text-cream"
+          >
+            <span className={`block w-5 h-0.5 bg-cream transition-transform ${open ? "translate-y-2 rotate-45" : ""}`} />
+            <span className={`block w-5 h-0.5 bg-cream transition-opacity ${open ? "opacity-0" : ""}`} />
+            <span className={`block w-5 h-0.5 bg-cream transition-transform ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+          </button>
+        </div>
       </div>
 
       {open && (

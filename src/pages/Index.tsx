@@ -19,7 +19,7 @@ const Index = () => {
       Object.assign(document.createElement("meta"), { name: "description" });
     meta.setAttribute(
       "content",
-      "Yuri Coelho — Portfólio de editor de vídeo. Edits cinematográficos, montagens FPS, motion graphics, sound design e color grading."
+      "Yuri Coelho — Portfólio de editor de vídeo. Edits cinematográficos, sound design."
     );
     if (!meta.parentElement) document.head.appendChild(meta);
   }, []);
@@ -28,20 +28,17 @@ const Index = () => {
     <main className="bg-background text-foreground">
       <Nav />
       <Hero />
-      <Marquee
-        items={["Drift", "Corte", "Grade", "Som", "Motion", "História", "Velocidade"]}
-        variant="ember"
-      />
+
       <About />
       <Marquee
-        items={["Edits FPS", "JDM Cinema", "Comercial", "Videoclipe", "Brand Films"]}
+        items={["CINEMATICS", "CLIPS LIVES", "GAMEPLAYS", "REELS"]}
         reverse
         variant="default"
       />
       <Skills />
       <Projects />
       <Marquee
-        items={["Disponível 2025", "Aberto a colabs", "Contrate", "Vamos criar", "@yuri.edits"]}
+        items={["Disponível", "Aberto a colabs", "Contrate", "Vamos criar", "@yuriceditor"]}
         variant="dark"
       />
       <Social />

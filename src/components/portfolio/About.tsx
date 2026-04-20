@@ -1,6 +1,9 @@
-import portrait from "@/assets/about-portrait.jpg";
+import { useTranslation } from "react-i18next";
+import portrait from "@/assets/portrait-new.jpg";
 
 export const About = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="about" className="relative py-24 md:py-40 bg-cream">
       <div className="container grid grid-cols-12 gap-6 lg:gap-12">
@@ -27,32 +30,24 @@ export const About = () => {
         <div className="col-span-12 lg:col-span-6 flex flex-col justify-center">
           <div className="reveal">
             <p className="mono-text text-xs uppercase tracking-[0.4em] text-ember mb-6">
-              <span className="text-foreground/40">02 /</span> Sobre Mim
+              <span className="text-foreground/40">{t("about.section").split(" ")[0]} </span> 
+              {t("about.section").split(" ").slice(1).join(" ")}
             </p>
             <h2 className="display-text text-5xl md:text-7xl lg:text-8xl mb-8">
-              Cortes que
+              {t("about.title")}
               <br />
-              <span className="text-ember">respiram.</span>
+              <span className="text-ember">{t("about.titleHighlight")}</span>
             </h2>
 
             <div className="space-y-5 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/80">
-              <p>
-                Sou o Yuri Coelho — editor de vídeo obcecado por ritmo, cor e a
-                tensão entre o silêncio e o impacto. Meu trabalho mistura narrativa
-                cinematográfica com a energia crua focada em direcionar o
-                espectador. Amo ser o que movimenta, o que gira a tensão e o que
-                fornece o foco — dos edits FPS aos vídeos de anúncios.
-              </p>
-              <p className="text-foreground/60">
-                Cada corte é intencional. Cada frame é um frame que eu assistiria duas vezes.
-              </p>
+              <p>{t("about.p1")}</p>
+              <p className="text-foreground/60">{t("about.p2")}</p>
             </div>
 
-            <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
+            <div className="mt-10 grid grid-cols-2 gap-6 max-w-[280px]">
               {[
-                { n: "10", l: "Projetos" },
-                { n: "02", l: "Anos" },
-                { n: "—", l: "Prêmios" },
+                { n: "10", l: t("about.stats.projects") },
+                { n: "02", l: t("about.stats.years") },
               ].map((s) => (
                 <div key={s.l} className="border-l-2 border-ember pl-4">
                   <div className="display-text text-3xl md:text-4xl">{s.n}</div>

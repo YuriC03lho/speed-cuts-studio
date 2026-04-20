@@ -1,6 +1,9 @@
+import { useTranslation } from "react-i18next";
 import heroPoster from "@/assets/hero-poster.jpg";
 
 export const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
@@ -30,12 +33,12 @@ export const Hero = () => {
         <div className="flex flex-wrap items-center justify-between gap-4 mono-text text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/70">
           <div className="flex items-center gap-3">
             <span className="rec-dot" />
-            <span>Tocando agora — Reel 25 — 26</span>
+            <span>{t("hero.playing")} — REELS</span>
           </div>
           <div className="hidden sm:flex items-center gap-6">
-            <span>Vila Velha · ES</span>
+            <span>{t("hero.location")}</span>
             <span className="text-ember">●</span>
-            <span>Disponível para projetos</span>
+            <span>{t("hero.available")}</span>
           </div>
           <div>00:01:24:12</div>
         </div>
@@ -56,20 +59,20 @@ export const Hero = () => {
           <div className="mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8 reveal">
             <div>
               <p className="mono-text text-sm md:text-base uppercase tracking-[0.3em] text-cream/90">
-                Editor de Vídeo
+                {t("hero.role")}
               </p>
               <p className="mt-2 mono-text text-xs uppercase tracking-widest text-cream/50">
-                Edits FPS · Motion · Color Grade · Sound Design
+                Sound Design · Cortes · RITMO
               </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
               <a href="#projects" className="btn-brutal !border-cream !text-cream !bg-transparent">
-                <span>Ver Projetos</span>
+                <span>{t("hero.viewProjects")}</span>
                 <span>→</span>
               </a>
               <a href="#about" className="mono-text text-xs uppercase tracking-widest text-cream/70 hover:text-ember transition-colors flex items-center gap-2">
-                Sobre mim
+                {t("hero.aboutMe")}
                 <span className="text-ember">↓</span>
               </a>
             </div>
@@ -80,7 +83,7 @@ export const Hero = () => {
       <div className="relative z-10 container pb-10">
         <div className="flex items-end justify-between gap-6">
           <div className="mono-text text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/50 max-w-xs">
-            Editor cinematográfico focado em ritmo, energia e narrativa marcante.
+            {t("hero.tagline")}
           </div>
           <div className="hidden md:block mono-text text-xs uppercase tracking-[0.3em] text-cream/50 text-right">
             <div className="flex items-center gap-2 justify-end">

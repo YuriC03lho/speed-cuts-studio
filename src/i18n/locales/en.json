@@ -1,0 +1,53 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "social": "Connect",
+    "reels": "REELS"
+  },
+  "hero": {
+    "playing": "Now playing",
+    "location": "Vila Velha · ES",
+    "available": "Available for projects",
+    "role": "Video Editor",
+    "viewProjects": "View Projects",
+    "aboutMe": "About me",
+    "tagline": "Cinematographic editor focused on rhythm, energy, and striking narrative."
+  },
+  "about": {
+    "section": "02 // About Me",
+    "title": "Cuts that",
+    "titleHighlight": "breathe.",
+    "p1": "I'm Yuri Coelho — a video editor obsessed with rhythm, color, and the tension between silence and impact. My work blends cinematic storytelling with raw energy focused on directing the viewer. I love being the one who moves, the one who builds tension, and the one who provides focus — from ad videos.",
+    "p2": "Every cut is intentional. Every frame is a frame I would watch twice.",
+    "stats": {
+      "projects": "Projects",
+      "years": "Years"
+    }
+  },
+  "skills": {
+    "section": "03 // Skills · Toolkit",
+    "title": "Made for",
+    "titleHighlight": "speed.",
+    "tagline": "Four disciplines, one signature. Every project is an exercise in rhythm.",
+    "mastery": "Mastery"
+  },
+  "projects": {
+    "section": "04 // Selected Works",
+    "title": "The reel",
+    "titleHighlight": "in motion.",
+    "tagline": "06 projects · 2025 — 2026",
+    "watch": "WATCH",
+    "fullReel": "Full Reel on YouTube"
+  },
+  "social": {
+    "section": "05 // Let's Connect",
+    "title": "Follow the",
+    "titleHighlight": "rhythm.",
+    "tagline": "Connect, send a message and let's make something memorable.",
+    "contact": "For collaborations",
+    "follow": "Follow"
+  }
+}

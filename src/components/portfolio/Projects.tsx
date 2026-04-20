@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Play, X } from "lucide-react";
 import { projects } from "@/data/projects";
 
@@ -12,6 +13,7 @@ function toEmbed(url: string): { src: string; type: "iframe" | "video" } {
 }
 
 export const Projects = () => {
+  const { t } = useTranslation();
   const [active, setActive] = useState<string | null>(null);
   const current = projects.find((p) => p.id === active);
 
@@ -22,17 +24,18 @@ export const Projects = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 reveal">
           <div>
             <p className="mono-text text-xs uppercase tracking-[0.4em] text-ember mb-6">
-              <span className="text-foreground/40">04 /</span> Trabalhos Selecionados
+              <span className="text-foreground/40">{t("projects.section").split(" ")[0]} </span> 
+              {t("projects.section").split(" ").slice(1).join(" ")}
             </p>
             <h2 className="display-text text-5xl md:text-7xl lg:text-8xl">
-              O reel
+              {t("projects.title")}
               <br />
-              <span className="text-ember">em movimento.</span>
+              <span className="text-ember">{t("projects.titleHighlight")}</span>
             </h2>
           </div>
           <div className="mono-text text-xs uppercase tracking-widest text-foreground/60 flex items-center gap-3">
             <span className="rec-dot" />
-            <span>06 projetos · 2025 — 2026</span>
+            <span>{t("projects.tagline")}</span>
           </div>
         </div>
 
@@ -85,7 +88,7 @@ export const Projects = () => {
                         </h3>
                       </div>
                       <span className="mono-text text-xs text-ember translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all">
-                        ASSISTIR →
+                        {t("projects.watch")} →
                       </span>
                     </div>
                   </div>
@@ -97,7 +100,7 @@ export const Projects = () => {
 
         <div className="mt-16 flex justify-center reveal">
           <a href="#social" className="btn-brutal">
-            <span>Reel completo no YouTube</span>
+            <span>{t("projects.fullReel")}</span>
             <span className="text-ember">→</span>
           </a>
         </div>

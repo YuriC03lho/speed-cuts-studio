@@ -1,4 +1,8 @@
+import { useTranslation } from "react-i18next";
+
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="relative bg-cream border-t-2 border-foreground/15 py-10">
       <div className="container">
@@ -8,7 +12,7 @@ export const Footer = () => {
               YC
             </div>
             <div className="mono-text text-xs uppercase tracking-widest text-foreground/60">
-              <div>Yuri Coelho — Video Editor</div>
+              <div>Yuri Coelho — {t("hero.role")}</div>
               <div className="text-foreground/40">© {new Date().getFullYear()} · All rights reserved</div>
             </div>
           </div>

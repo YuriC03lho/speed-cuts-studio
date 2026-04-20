@@ -1,13 +1,16 @@
+import { useTranslation } from "react-i18next";
 import { Scissors, Music2, Crosshair, Film } from "lucide-react";
 
 const skills = [
-  { icon: Scissors, name: "Edição", level: 95, desc: "Premiere · DaVinci · CapCut", size: "lg" },
+  { icon: Scissors, name: "Edição", level: 95, desc: "Premiere · CapCut", size: "lg" },
   { icon: Music2, name: "Sound Design", level: 30, desc: "Foley · SFX · Mix", size: "md" },
-  { icon: Crosshair, name: "Edição de Edits", level: 90, desc: "Sync · Beat drops · VFX", size: "lg" },
+  { icon: Crosshair, name: "GAME EDITS", level: 90, desc: "Sync · Beat drops", size: "lg" },
   { icon: Film, name: "Storytelling", level: 90, desc: "Ritmo · Narrativa", size: "md" },
 ];
 
 export const Skills = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="skills" className="relative py-24 md:py-40 bg-ink text-cream overflow-hidden">
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-radial-glow opacity-60 animate-drift-float" />
@@ -16,18 +19,19 @@ export const Skills = () => {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 reveal">
           <div>
             <p className="mono-text text-xs uppercase tracking-[0.4em] text-ember mb-6">
-              <span className="text-cream/40">03 /</span> Skills · Toolkit
+              <span className="text-cream/40">{t("skills.section").split(" ")[0]} </span> 
+              {t("skills.section").split(" ").slice(1).join(" ")}
             </p>
             <h2 className="display-text text-5xl md:text-7xl lg:text-8xl">
-              Feito para
+              {t("skills.title")}
               <br />
               <span className="text-transparent bg-gradient-sunset bg-clip-text">
-                velocidade.
+                {t("skills.titleHighlight")}
               </span>
             </h2>
           </div>
           <p className="mono-text text-xs uppercase tracking-widest text-cream/50 max-w-xs">
-            Quatro disciplinas, uma assinatura. Cada projeto é um exercício de ritmo.
+            {t("skills.tagline")}
           </p>
         </div>
 
@@ -62,7 +66,7 @@ export const Skills = () => {
 
                   <div className="space-y-2">
                     <div className="flex justify-between mono-text text-[10px] uppercase tracking-widest text-cream/40">
-                      <span>Domínio</span>
+                      <span>{t("skills.mastery")}</span>
                       <span>{s.level}%</span>
                     </div>
                     <div className="h-1 bg-cream/10 overflow-hidden">

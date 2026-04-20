@@ -1,23 +1,26 @@
+import { useTranslation } from "react-i18next";
 import { Youtube, Instagram } from "lucide-react";
 
 const socials = [
   {
     name: "YouTube",
-    handle: "@yuric.edits",
+    handle: "@yuriceditor",
     icon: Youtube,
-    href: "#",
+    href: "https://www.youtube.com/@YuriCEditor",
     color: "from-ember to-ember-glow",
   },
   {
     name: "Instagram",
-    handle: "@yuric.edits",
+    handle: "@yuriceditor",
     icon: Instagram,
-    href: "#",
+    href: "https://www.instagram.com/yuriceditor/",
     color: "from-peach to-ember",
   },
 ];
 
 export const Social = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="social" className="relative py-24 md:py-40 bg-ink text-cream overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial-glow opacity-40" />
@@ -25,17 +28,18 @@ export const Social = () => {
       <div className="container relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16 reveal">
           <p className="mono-text text-xs uppercase tracking-[0.4em] text-ember mb-6">
-            <span className="text-cream/40">05 /</span> Vamos nos conectar
+            <span className="text-cream/40">{t("social.section").split(" ")[0]} </span> 
+            {t("social.section").split(" ").slice(1).join(" ")}
           </p>
           <h2 className="display-text text-5xl md:text-7xl lg:text-8xl mb-8">
-            Acompanhe o
+            {t("social.title")}
             <br />
             <span className="text-transparent bg-gradient-sunset bg-clip-text">
-              ritmo.
+              {t("social.titleHighlight")}
             </span>
           </h2>
           <p className="text-lg md:text-xl text-cream/70 max-w-xl mx-auto">
-            Conecte, mande mensagem e vamos fazer algo memorável.
+            {t("social.tagline")}
           </p>
         </div>
 
@@ -66,7 +70,7 @@ export const Social = () => {
 
                 <div className="flex items-end justify-between pt-6 border-t border-cream/10">
                   <div className="mono-text text-[10px] uppercase tracking-widest text-cream/40">
-                    Acompanhe
+                    {t("social.follow")}
                   </div>
                   <span className="mono-text text-sm text-ember group-hover:translate-x-1 transition-transform inline-block">
                     →
@@ -79,13 +83,13 @@ export const Social = () => {
 
         <div className="mt-20 text-center reveal">
           <p className="mono-text text-xs uppercase tracking-widest text-cream/50 mb-4">
-            Para colaborações
+            {t("social.contact")}
           </p>
           <a
-            href="mailto:yuricoelhovieira@gmail.com"
+            href="mailto:yuriceditor@gmail.com"
             className="display-text text-3xl md:text-5xl lg:text-6xl text-cream hover:text-ember transition-colors glitch inline-block break-all"
           >
-            yuricoelhovieira@gmail.com
+            yuriceditor@gmail.com
           </a>
         </div>
       </div>
