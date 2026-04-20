@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { Play, X, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
@@ -18,11 +18,13 @@ export const Projects = () => {
   const { t } = useTranslation();
   const [active, setActive] = useState<string | string[] | null>(null);
 
-  const currentList = Array.isArray(active) 
-    ? active.map(id => projects.find(p => p.id === id)).filter(Boolean) as typeof projects
-    : active 
-      ? [projects.find(p => p.id === active)].filter(Boolean) as typeof projects 
-      : [];
+  const currentList = useMemo(() => {
+    return Array.isArray(active) 
+      ? active.map(id => projects.find(p => p.id === id)).filter(Boolean) as typeof projects
+      : active 
+        ? [projects.find(p => p.id === active)].filter(Boolean) as typeof projects 
+        : [];
+  }, [active]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -48,7 +50,7 @@ export const Projects = () => {
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [currentList]);
+  }, [active]);
 
   useEffect(() => {
     const handleOpenVideo = (e: CustomEvent<string>) => {
@@ -194,8 +196,8 @@ export const Projects = () => {
                       );
                     })()
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center bg-ink/50 cursor-pointer overflow-hidden">
-                      <img src={current.img} alt={current.title} className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm scale-110" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-ink cursor-pointer overflow-hidden">
+                      <img src={current.img} alt={current.title} className="absolute inset-0 w-full h-full object-cover opacity-30" />
                       <div className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full bg-cream/95 flex items-center justify-center shadow-warm">
                         <Play className="w-7 h-7 md:w-8 md:h-8 text-ink fill-ink ml-1" />
                       </div>
