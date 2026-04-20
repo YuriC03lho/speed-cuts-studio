@@ -5,7 +5,7 @@
     "skills": "Skills",
     "projects": "Projetos",
     "social": "Contato",
-    "briefing": "Briefing",
+    "briefing": "Pedido",
     "reels": "VER REELS"
   },
   "hero": {
@@ -52,24 +52,28 @@
     "follow": "Acompanhe"
   },
   "briefing": {
-    "section": "06 // Briefing do Projeto",
+    "section": "06 // Fazer Pedido",
     "title": "Inicie seu",
-    "titleHighlight": "projeto.",
+    "titleHighlight": "pedido.",
     "tagline": "Preencha os detalhes e receba um orçamento personalizado no seu e-mail.",
     "fields": {
-      "videoTitle": "Título do Vídeo",
+      "videoTitle": "Titulo do Projeto",
       "videoTitlePlaceholder": "Ex: Cinematic Gaming Reel",
       "description": "Descrição do Projeto",
       "descriptionPlaceholder": "Conte um pouco sobre o estilo e objetivo do vídeo...",
-      "rawMinutes": "Minutos Brutos (Estimativa)",
+      "rawMinutes": "Video Bruto (Em Minutos)",
       "rawMinutesPlaceholder": "Ex: 30",
-      "targetDuration": "Duração Final Desejada (Minutos)",
+      "targetDuration": "Duração Final do Video Desejada (Minutos)",
       "targetDurationPlaceholder": "Ex: 10",
       "otherContact": "Outras formas de contato?",
-      "otherContactPlaceholder": "WhatsApp, Discord ou Telegram..."
+      "otherContactPlaceholder": "WhatsApp, Discord ou Telegram...",
+      "phone": "Numero de Telefone",
+      "discord": "Discord",
+      "telegram": "Telegram",
+      "instagram": "Instagram"
     },
-    "submit": "ENVIAR BRIEFING",
+    "submit": "ENVIAR PEDIDO",
     "sending": "ENVIANDO...",
-    "success": "Briefing enviado com sucesso!"
+    "success": "Pedido enviado com sucesso!"
   }
 }

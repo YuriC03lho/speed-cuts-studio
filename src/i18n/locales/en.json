@@ -5,7 +5,7 @@
     "skills": "Skills",
     "projects": "Projects",
     "social": "Contact",
-    "briefing": "Briefing",
+    "briefing": "Order",
     "reels": "WATCH REELS"
   },
   "hero": {
@@ -52,24 +52,28 @@
     "follow": "Follow"
   },
   "briefing": {
-    "section": "06 // Project Briefing",
+    "section": "06 // Place Order",
     "title": "Start your",
-    "titleHighlight": "project.",
+    "titleHighlight": "order.",
     "tagline": "Fill in the details and receive a personalized quote in your email.",
     "fields": {
-      "videoTitle": "Video Title",
+      "videoTitle": "Project Title",
       "videoTitlePlaceholder": "Ex: Cinematic Gaming Reel",
       "description": "Project Description",
       "descriptionPlaceholder": "Tell us a bit about the style and objective of the video...",
-      "rawMinutes": "Raw Minutes (Estimate)",
+      "rawMinutes": "Raw Footage (In Minutes)",
       "rawMinutesPlaceholder": "Ex: 30",
-      "targetDuration": "Desired Final Duration (Minutes)",
+      "targetDuration": "Desired Final Video Duration (Minutes)",
       "targetDurationPlaceholder": "Ex: 10",
       "otherContact": "Other forms of contact?",
-      "otherContactPlaceholder": "WhatsApp, Discord or Telegram..."
+      "otherContactPlaceholder": "WhatsApp, Discord or Telegram...",
+      "phone": "Phone Number",
+      "discord": "Discord",
+      "telegram": "Telegram",
+      "instagram": "Instagram"
     },
-    "submit": "SEND BRIEFING",
+    "submit": "SEND ORDER",
     "sending": "SENDING...",
-    "success": "Briefing sent successfully!"
+    "success": "Order sent successfully!"
   }
 }
