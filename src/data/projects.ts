@@ -19,6 +19,7 @@ export interface Project {
   videoUrl: string;
   featured?: boolean;
   isVertical?: boolean;
+  originLink?: string;
 }
 
 export const projects: Project[] = [
@@ -68,7 +69,8 @@ export const projects: Project[] = [
     year: "2025",
     img: "https://i.ytimg.com/vi/Mkds88PW6IM/maxresdefault.jpg",
     runtime: "00:24",
-    videoUrl: "https://www.instagram.com/reel/DRuY-P4DW4l/?utm_source=ig_web_button_share_sheet&igsh=MzRlODBiNWFlZA==",
+    videoUrl: "/videos/barra_clean.mp4",
     isVertical: true,
+    originLink: "https://www.instagram.com/p/DRuY-P4DW4l/",
   },
 ];

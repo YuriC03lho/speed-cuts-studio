@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Play, X } from "lucide-react";
+import { Play, X, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
 
 // Converte URLs do YouTube/Vimeo/Instagram em URL de embed
@@ -143,6 +143,19 @@ export const Projects = () => {
                 <video src={src} controls autoPlay className="w-full h-full" />
               );
             })()}
+
+            {current.originLink && (
+              <a
+                href={current.originLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink/80 backdrop-blur-sm border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
+              >
+                <ExternalLink className="w-3 h-3" />
+                <span>Ver Original</span>
+              </a>
+            )}
+
             <div className={`absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70 ${current.isVertical ? 'px-4' : ''}`}>
               <span>
                 <span className="text-ember">/ {current.id}</span> · {current.title}
