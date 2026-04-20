@@ -64,18 +64,7 @@ export const Skills = () => {
                     {s.desc}
                   </p>
 
-                  <div className="space-y-2">
-                    <div className="flex justify-between mono-text text-[10px] uppercase tracking-widest text-cream/40">
-                      <span>{t("skills.mastery")}</span>
-                      <span>{s.level}%</span>
-                    </div>
-                    <div className="h-1 bg-cream/10 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-sunset origin-left transition-transform duration-1000 ease-out scale-x-0 group-[.is-visible]:scale-x-100"
-                        style={{ width: `${s.level}%`, transitionDelay: `${300 + i * 80}ms` }}
-                      />
-                    </div>
-                  </div>
+
                 </div>
               </div>
             );
