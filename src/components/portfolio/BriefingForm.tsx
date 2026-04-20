@@ -9,7 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
-import { Phone, MessageSquare, Send, Instagram } from "lucide-react";
+import { Phone, MessageSquare, Send, Instagram, HelpCircle } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const briefingSchema = z.object({
   videoTitle: z.string().min(2, { message: "Título é obrigatório" }),
@@ -117,218 +118,270 @@ export const BriefingForm = () => {
         </div>
 
         <div className="bg-ink p-8 md:p-12 shadow-brutal border-2 border-ink reveal">
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Título do Projeto */}
-                <FormField
-                  control={form.control}
-                  name="videoTitle"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
-                        {t("briefing.fields.videoTitle")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input 
-                          onFocus={playClick}
-                          placeholder={t("briefing.fields.videoTitlePlaceholder")} 
-                          className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage className="text-ember text-[10px] uppercase" />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Video Bruto */}
-                <FormField
-                  control={form.control}
-                  name="rawMinutes"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
-                        {t("briefing.fields.rawMinutes")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input 
-                          onFocus={playClick}
-                          type="number"
-                          placeholder={t("briefing.fields.rawMinutesPlaceholder")} 
-                          className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage className="text-ember text-[10px] uppercase" />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Duração Final */}
-                <FormField
-                  control={form.control}
-                  name="targetDuration"
-                  render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
-                        {t("briefing.fields.targetDuration")}
-                      </FormLabel>
-                      <FormControl>
-                        <Input 
-                          onFocus={playClick}
-                          type="number"
-                          placeholder={t("briefing.fields.targetDurationPlaceholder")} 
-                          className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
-                          {...field} 
-                        />
-                      </FormControl>
-                      <FormMessage className="text-ember text-[10px] uppercase" />
-                    </FormItem>
-                  )}
-                />
-
-                {/* Outro Contato Toggle */}
-                <div className="flex flex-col justify-end">
+          <TooltipProvider>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Título do Projeto */}
                   <FormField
                     control={form.control}
-                    name="hasOtherContact"
+                    name="videoTitle"
                     render={({ field }) => (
-                      <FormItem className="flex items-center space-x-3 space-y-0 h-14">
+                      <FormItem className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
+                            {t("briefing.fields.videoTitle")}
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="w-3 h-3 text-ember cursor-help" />
+                            </TooltipTrigger>
+                            <TooltipContent className="bg-ember text-cream border-none mono-text text-[10px] rounded-none">
+                              <p>{t("briefing.fields.help.videoTitle")}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
                         <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={(checked) => {
-                              field.onChange(checked);
-                              playClick();
-                            }}
-                            className="border-cream/20 data-[state=checked]:bg-ember data-[state=checked]:border-ember rounded-none w-5 h-5"
+                          <Input 
+                            onFocus={playClick}
+                            placeholder={t("briefing.fields.videoTitlePlaceholder")} 
+                            className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
+                            {...field} 
                           />
                         </FormControl>
-                        <FormLabel className="mono-text text-[10px] uppercase tracking-widest text-cream/70 cursor-pointer">
-                          {t("briefing.fields.otherContact")}
-                        </FormLabel>
+                        <FormMessage className="text-ember text-[10px] uppercase" />
                       </FormItem>
                     )}
                   />
+
+                  {/* Video Bruto */}
+                  <FormField
+                    control={form.control}
+                    name="rawMinutes"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
+                            {t("briefing.fields.rawMinutes")}
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="w-3 h-3 text-ember cursor-help" />
+                            </TooltipTrigger>
+                            <TooltipContent className="bg-ember text-cream border-none mono-text text-[10px] rounded-none">
+                              <p>{t("briefing.fields.help.rawMinutes")}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <FormControl>
+                          <Input 
+                            onFocus={playClick}
+                            type="number"
+                            placeholder={t("briefing.fields.rawMinutesPlaceholder")} 
+                            className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage className="text-ember text-[10px] uppercase" />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Duração Final */}
+                  <FormField
+                    control={form.control}
+                    name="targetDuration"
+                    render={({ field }) => (
+                      <FormItem className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
+                            {t("briefing.fields.targetDuration")}
+                          </FormLabel>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <HelpCircle className="w-3 h-3 text-ember cursor-help" />
+                            </TooltipTrigger>
+                            <TooltipContent className="bg-ember text-cream border-none mono-text text-[10px] rounded-none">
+                              <p>{t("briefing.fields.help.targetDuration")}</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </div>
+                        <FormControl>
+                          <Input 
+                            onFocus={playClick}
+                            type="number"
+                            placeholder={t("briefing.fields.targetDurationPlaceholder")} 
+                            className="bg-transparent border-cream/20 text-cream h-14 rounded-none focus-visible:ring-ember focus-visible:border-ember"
+                            {...field} 
+                          />
+                        </FormControl>
+                        <FormMessage className="text-ember text-[10px] uppercase" />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Outro Contato Toggle */}
+                  <div className="flex flex-col justify-end">
+                    <FormField
+                      control={form.control}
+                      name="hasOtherContact"
+                      render={({ field }) => (
+                        <FormItem className="flex items-center space-x-3 space-y-0 h-14">
+                          <FormControl>
+                            <Checkbox
+                              checked={field.value}
+                              onCheckedChange={(checked) => {
+                                field.onChange(checked);
+                                playClick();
+                              }}
+                              className="border-cream/20 data-[state=checked]:bg-ember data-[state=checked]:border-ember rounded-none w-5 h-5"
+                            />
+                          </FormControl>
+                          <div className="flex items-center gap-2">
+                            <FormLabel className="mono-text text-[10px] uppercase tracking-widest text-cream/70 cursor-pointer">
+                              {t("briefing.fields.otherContact")}
+                            </FormLabel>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <HelpCircle className="w-3 h-3 text-ember cursor-help" />
+                              </TooltipTrigger>
+                              <TooltipContent className="bg-ember text-cream border-none mono-text text-[10px] rounded-none">
+                                <p>{t("briefing.fields.help.otherContact")}</p>
+                              </TooltipContent>
+                            </Tooltip>
+                          </div>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Conditional Optional Fields */}
-              {form.watch("hasOtherContact") && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border border-cream/10 bg-cream/5 animate-fade-in-up">
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
-                          <Phone className="w-3 h-3" /> {t("briefing.fields.phone")}
-                        </FormLabel>
-                        <FormControl>
-                          <Input 
-                            onFocus={playClick}
-                            className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
-                            {...field} 
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="discord"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
-                          <MessageSquare className="w-3 h-3" /> {t("briefing.fields.discord")}
-                        </FormLabel>
-                        <FormControl>
-                          <Input 
-                            onFocus={playClick}
-                            className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
-                            {...field} 
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="telegram"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
-                          <Send className="w-3 h-3" /> {t("briefing.fields.telegram")}
-                        </FormLabel>
-                        <FormControl>
-                          <Input 
-                            onFocus={playClick}
-                            className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
-                            {...field} 
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="instagram"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
-                          <Instagram className="w-3 h-3" /> {t("briefing.fields.instagram")}
-                        </FormLabel>
-                        <FormControl>
-                          <Input 
-                            onFocus={playClick}
-                            className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
-                            {...field} 
-                          />
-                        </FormControl>
-                      </FormItem>
-                    )}
-                  />
-                </div>
-              )}
-
-              {/* Descrição */}
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem className="space-y-3">
-                    <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
-                      {t("briefing.fields.description")}
-                    </FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        onFocus={playClick}
-                        placeholder={t("briefing.fields.descriptionPlaceholder")} 
-                        className="bg-transparent border-cream/20 text-cream min-h-[150px] rounded-none focus-visible:ring-ember focus-visible:border-ember resize-none"
-                        {...field} 
-                      />
-                    </FormControl>
-                    <FormMessage className="text-ember text-[10px] uppercase" />
-                  </FormItem>
+                {/* Conditional Optional Fields */}
+                {form.watch("hasOtherContact") && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 border border-cream/10 bg-cream/5 animate-fade-in-up">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
+                            <Phone className="w-3 h-3" /> {t("briefing.fields.phone")}
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              onFocus={playClick}
+                              className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
+                              {...field} 
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="discord"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
+                            <MessageSquare className="w-3 h-3" /> {t("briefing.fields.discord")}
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              onFocus={playClick}
+                              className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
+                              {...field} 
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="telegram"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
+                            <Send className="w-3 h-3" /> {t("briefing.fields.telegram")}
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              onFocus={playClick}
+                              className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
+                              {...field} 
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="instagram"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="mono-text text-[10px] text-cream/40 uppercase flex items-center gap-2">
+                            <Instagram className="w-3 h-3" /> {t("briefing.fields.instagram")}
+                          </FormLabel>
+                          <FormControl>
+                            <Input 
+                              onFocus={playClick}
+                              className="bg-transparent border-cream/10 text-cream h-10 rounded-none text-xs"
+                              {...field} 
+                            />
+                          </FormControl>
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 )}
-              />
 
-              <div className="flex justify-center pt-8">
-                <Button 
-                  type="submit" 
-                  disabled={loading}
-                  onClick={playClick}
-                  className="btn-brutal !bg-cream !text-ink hover:!bg-ember hover:!text-cream w-full md:w-auto px-12 h-16 transition-all shadow-brutal-sm group"
-                >
-                  <span className="mono-text font-bold tracking-widest uppercase">
-                    {loading ? t("briefing.sending") : t("briefing.submit")}
-                  </span>
-                  {!loading && <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>}
-                </Button>
-              </div>
+                {/* Descrição */}
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <FormLabel className="mono-text text-xs uppercase tracking-widest text-cream/70">
+                          {t("briefing.fields.description")}
+                        </FormLabel>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <HelpCircle className="w-3 h-3 text-ember cursor-help" />
+                          </TooltipTrigger>
+                          <TooltipContent className="bg-ember text-cream border-none mono-text text-[10px] rounded-none">
+                            <p>{t("briefing.fields.help.description")}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </div>
+                      <FormControl>
+                        <Textarea 
+                          onFocus={playClick}
+                          placeholder={t("briefing.fields.descriptionPlaceholder")} 
+                          className="bg-transparent border-cream/20 text-cream min-h-[150px] rounded-none focus-visible:ring-ember focus-visible:border-ember resize-none"
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage className="text-ember text-[10px] uppercase" />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="flex justify-center pt-8">
+                  <Button 
+                    type="submit" 
+                    disabled={loading}
+                    onClick={playClick}
+                    className="btn-brutal !bg-cream !text-ink hover:!bg-ember hover:!text-cream w-full md:w-auto px-12 h-16 transition-all shadow-brutal-sm group"
+                  >
+                    <span className="mono-text font-bold tracking-widest uppercase">
+                      {loading ? t("briefing.sending") : t("briefing.submit")}
+                    </span>
+                    {!loading && <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>}
+                  </Button>
+                </div>
+              </form>
             </form>
-          </Form>
+          </TooltipProvider>
         </div>
       </div>
     </section>

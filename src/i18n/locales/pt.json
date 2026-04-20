@@ -70,7 +70,14 @@
       "phone": "Numero de Telefone",
       "discord": "Discord",
       "telegram": "Telegram",
-      "instagram": "Instagram"
+      "instagram": "Instagram",
+      "help": {
+        "videoTitle": "Dê um nome ao seu projeto para facilitar nossa organização.",
+        "description": "Conte o máximo de detalhes possível sobre o estilo e objetivo do vídeo.",
+        "rawMinutes": "O tempo total de gravação original ajuda a estimar o volume de trabalho.",
+        "targetDuration": "Isso define o ritmo e a estrutura da edição final.",
+        "otherContact": "Opcional, mas ajuda se precisarmos de um contato mais rápido."
+      }
     },
     "submit": "ENVIAR PEDIDO",
     "sending": "ENVIANDO...",
