@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
 import { Marquee } from "@/components/portfolio/Marquee";
@@ -12,6 +13,7 @@ import { useReveal } from "@/hooks/use-reveal";
 
 const Index = () => {
   useReveal();
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     document.title = "Yuri Coelho — Video Editor · Portfolio";
@@ -40,7 +42,11 @@ const Index = () => {
       <Projects />
       <BriefingForm />
       <Marquee
-        items={["Disponível", "Aberto a colabs", "Contrate", "Vamos criar", "@yuriceditor"]}
+        items={
+          i18n.language?.startsWith("en")
+            ? ["Available", "Open for collabs", "Hire me", "Let's create", "@yuriceditor"]
+            : ["Disponível", "Aberto a colabs", "Contrate", "Vamos criar", "@yuriceditor"]
+        }
         variant="dark"
       />
       <Social />
