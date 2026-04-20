@@ -24,6 +24,32 @@ export const Projects = () => {
       ? [projects.find(p => p.id === active)].filter(Boolean) as typeof projects 
       : [];
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [active]);
+
+  useEffect(() => {
+    if (currentList.length <= 1) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setCurrentIndex(Number(entry.target.getAttribute("data-index")));
+          }
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    const elements = document.querySelectorAll(".video-snap-item");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [currentList]);
+
   useEffect(() => {
     const handleOpenVideo = (e: CustomEvent<string>) => {
       if (e.detail.includes(',')) {
@@ -133,35 +159,48 @@ export const Projects = () => {
             <X className="w-5 h-5" />
           </button>
           
-          <div className="flex flex-col w-full min-h-screen">
-            {currentList.map((current, index) => (
+          <div className="flex flex-col w-full min-h-screen gap-[5dvh] py-[5dvh]">
+            {currentList.map((current, index) => {
+              const isActive = index === currentIndex;
+              
+              return (
               <div 
                 key={current.id + index}
-                className="w-full min-h-[100dvh] snap-center snap-always flex items-center justify-center flex-shrink-0 p-4 md:p-10 relative"
+                data-index={index}
+                className="video-snap-item w-full h-[85dvh] snap-center snap-always flex items-center justify-center flex-shrink-0 px-4 md:px-10 relative"
                 onClick={() => setActive(null)}
               >
                 <div
-                  className={`relative w-full transition-all duration-500 bg-black ${
+                  className={`relative w-full h-full transition-all duration-500 bg-black ${
                     current.isVertical 
-                      ? "max-w-[420px] aspect-[9/16]" 
-                      : "max-w-6xl aspect-video"
+                      ? "max-w-[420px] max-h-[85dvh]" 
+                      : "max-w-6xl max-h-[85dvh] aspect-video object-contain flex items-center justify-center"
                   }`}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {(() => {
-                    const { src, type } = toEmbed(current.videoUrl);
-                    return type === "iframe" ? (
-                      <iframe
-                        src={src}
-                        title={current.title}
-                        allow="autoplay; encrypted-media; fullscreen"
-                        allowFullScreen
-                        className="w-full h-full"
-                      />
-                    ) : (
-                      <video src={src} controls autoPlay className="w-full h-full" />
-                    );
-                  })()}
+                  {isActive ? (
+                    (() => {
+                      const { src, type } = toEmbed(current.videoUrl);
+                      return type === "iframe" ? (
+                        <iframe
+                          src={src}
+                          title={current.title}
+                          allow="autoplay; encrypted-media; fullscreen"
+                          allowFullScreen
+                          className="w-full h-full"
+                        />
+                      ) : (
+                        <video src={src} controls autoPlay className="w-full h-full" />
+                      );
+                    })()
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center bg-ink/50 cursor-pointer overflow-hidden">
+                      <img src={current.img} alt={current.title} className="absolute inset-0 w-full h-full object-cover opacity-40 blur-sm scale-110" />
+                      <div className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full bg-cream/95 flex items-center justify-center shadow-warm">
+                        <Play className="w-7 h-7 md:w-8 md:h-8 text-ink fill-ink ml-1" />
+                      </div>
+                    </div>
+                  )}
 
                   {current.originLink && (
                     <a
@@ -184,12 +223,12 @@ export const Projects = () => {
                 </div>
                 
                 {currentList.length > 1 && index < currentList.length - 1 && (
-                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 mono-text text-[10px] uppercase tracking-widest text-cream/40 animate-pulse">
-                    ↓ Role para o próximo vídeo
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 mono-text text-[10px] uppercase tracking-widest text-cream/40 animate-pulse">
+                    ↓ Role para o próximo
                   </div>
                 )}
               </div>
-            ))}
+            )})}
           </div>
         </div>
       )}
