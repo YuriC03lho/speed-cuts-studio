@@ -47,7 +47,7 @@ export const Hero = () => {
       <div className="relative z-10 container flex-1 flex flex-col justify-center py-16">
         <div className="max-w-[1400px]">
           <p className="mono-text text-xs md:text-sm uppercase tracking-[0.4em] text-peach mb-6 reveal">
-            Portfólio / Vol. 04
+            Portfólio / Vol. 01
           </p>
 
           <h1 className="display-text text-cream glitch text-[18vw] md:text-[14vw] lg:text-[12vw] xl:text-[11rem] 2xl:text-[14rem] leading-[0.82] reveal">
