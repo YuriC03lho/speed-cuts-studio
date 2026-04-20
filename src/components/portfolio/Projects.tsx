@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Play, X, ExternalLink } from "lucide-react";
+import { Play, X, ExternalLink, ChevronUp, ChevronDown } from "lucide-react";
 import { projects } from "@/data/projects";
 
 const VideoPlayer = ({ current, isActive }: { current: any; isActive: boolean }) => {
@@ -191,9 +191,10 @@ export const Projects = () => {
       {/* Lightbox */}
       {currentList.length > 0 && (
         <div
-          className="fixed inset-0 z-[200] bg-ink animate-fade-in-up overflow-y-auto overflow-x-hidden snap-y snap-mandatory"
+          className="fixed inset-0 z-[200] bg-ink animate-fade-in-up flex items-center justify-center p-4 md:p-10"
           onClick={() => setActive(null)}
         >
+          {/* Close Button */}
           <button
             onClick={() => setActive(null)}
             aria-label="Fechar"
@@ -201,55 +202,88 @@ export const Projects = () => {
           >
             <X className="w-5 h-5" />
           </button>
+
+          {/* Navigation Controls (If more than 1 video) */}
+          {currentList.length > 1 && (
+            <div className="fixed right-4 md:right-10 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-[210]">
+              <button
+                disabled={currentIndex === 0}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(prev => prev - 1);
+                }}
+                className={`w-12 h-12 border-2 border-cream flex items-center justify-center transition-all ${
+                  currentIndex === 0 ? 'opacity-20 cursor-not-allowed' : 'text-cream hover:bg-ember hover:border-ember'
+                }`}
+              >
+                <ChevronUp className="w-6 h-6" />
+              </button>
+              
+              <div className="flex flex-col items-center gap-2 py-2">
+                {currentList.map((_, i) => (
+                  <div 
+                    key={i}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors ${i === currentIndex ? 'bg-ember' : 'bg-cream/20'}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                disabled={currentIndex === currentList.length - 1}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(prev => prev + 1);
+                }}
+                className={`w-12 h-12 border-2 border-cream flex items-center justify-center transition-all ${
+                  currentIndex === currentList.length - 1 ? 'opacity-20 cursor-not-allowed' : 'text-cream hover:bg-ember hover:border-ember'
+                }`}
+              >
+                <ChevronDown className="w-6 h-6" />
+              </button>
+            </div>
+          )}
           
-          <div className="flex flex-col w-full min-h-screen gap-[5dvh] py-[5dvh]">
+          <div className="w-full h-full flex items-center justify-center">
             {currentList.map((current, index) => {
               const isActive = index === currentIndex;
+              if (!isActive) return null; // Only render the active one for max performance
               
               return (
-              <div 
-                key={current.id + index}
-                data-index={index}
-                className="video-snap-item w-full h-[85dvh] snap-center snap-always flex items-center justify-center flex-shrink-0 px-4 md:px-10 relative"
-                onClick={() => setActive(null)}
-              >
-                <div
-                  className={`relative w-full h-full transition-all duration-500 bg-black ${
-                    current.isVertical 
-                      ? "max-w-[420px] max-h-[85dvh]" 
-                      : "max-w-6xl max-h-[85dvh] aspect-video object-contain flex items-center justify-center"
-                  }`}
-                  onClick={(e) => e.stopPropagation()}
+                <div 
+                  key={current.id + index}
+                  className="w-full h-full flex items-center justify-center relative"
+                  onClick={() => setActive(null)}
                 >
-                  <VideoPlayer current={current} isActive={isActive} />
+                  <div
+                    className={`relative w-full h-full max-h-[85dvh] transition-all duration-300 bg-black ${
+                      current.isVertical ? "max-w-[420px]" : "max-w-6xl aspect-video"
+                    } flex items-center justify-center`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <VideoPlayer current={current} isActive={isActive} />
 
-                  {current.originLink && (
-                    <a
-                      href={current.originLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
-                    >
-                      <ExternalLink className="w-3 h-3" />
-                      <span>Ver Original</span>
-                    </a>
-                  )}
+                    {current.originLink && (
+                      <a
+                        href={current.originLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-ink border border-cream/20 text-cream px-3 py-2 text-[10px] uppercase tracking-widest mono-text hover:border-ember hover:text-ember transition-colors"
+                      >
+                        <ExternalLink className="w-3 h-3" />
+                        <span>Ver Original</span>
+                      </a>
+                    )}
 
-                  <div className={`absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70 ${current.isVertical ? 'px-4' : ''}`}>
-                    <span>
-                      <span className="text-ember">/ {current.id}</span> · {current.title}
-                    </span>
-                    <span>{current.cat} · {current.year} · {current.runtime}</span>
+                    <div className={`absolute -bottom-12 left-0 right-0 flex items-center justify-between mono-text text-xs uppercase tracking-widest text-cream/70 ${current.isVertical ? 'px-4' : ''}`}>
+                      <span>
+                        <span className="text-ember">/ {current.id}</span> · {current.title}
+                      </span>
+                      <span>{current.cat} · {current.year} · {current.runtime}</span>
+                    </div>
                   </div>
                 </div>
-                
-                {currentList.length > 1 && index < currentList.length - 1 && (
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 mono-text text-[10px] uppercase tracking-widest text-cream/40">
-                    ↓ Role para o próximo
-                  </div>
-                )}
-              </div>
-            )})}
+              );
+            })}
           </div>
         </div>
       )}
