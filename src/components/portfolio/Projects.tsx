@@ -30,7 +30,7 @@ const VideoPlayer = ({ current, isActive }: { current: any; isActive: boolean })
 
   return (
     <>
-      <div className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${shouldRenderIframe ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+      <div className={`absolute inset-0 w-full h-full ${shouldRenderIframe ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
         {shouldRenderIframe && (
           type === "iframe" ? (
             <iframe
@@ -45,7 +45,7 @@ const VideoPlayer = ({ current, isActive }: { current: any; isActive: boolean })
           )
         )}
       </div>
-      <div className={`absolute inset-0 flex items-center justify-center bg-ink transition-opacity duration-300 ${!shouldRenderIframe ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+      <div className={`absolute inset-0 flex items-center justify-center bg-ink ${!shouldRenderIframe ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
         <img src={current.img} alt={current.title} className="absolute inset-0 w-full h-full object-cover opacity-30" />
         <div className="absolute w-16 h-16 md:w-20 md:h-20 rounded-full bg-cream/95 flex items-center justify-center shadow-warm">
           <Play className="w-7 h-7 md:w-8 md:h-8 text-ink fill-ink ml-1" />
@@ -244,7 +244,7 @@ export const Projects = () => {
                 </div>
                 
                 {currentList.length > 1 && index < currentList.length - 1 && (
-                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 mono-text text-[10px] uppercase tracking-widest text-cream/40 animate-pulse">
+                  <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 mono-text text-[10px] uppercase tracking-widest text-cream/40">
                     ↓ Role para o próximo
                   </div>
                 )}
