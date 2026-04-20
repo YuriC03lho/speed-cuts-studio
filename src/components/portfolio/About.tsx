@@ -41,8 +41,8 @@ export const About = () => {
 
             <div className="space-y-5 max-w-xl text-lg md:text-xl leading-relaxed text-foreground/80">
               <p>
-                {t("about.p1").split(/(Iniciante|Beginner)/).map((part, i) => 
-                  part === "Iniciante" || part === "Beginner" ? (
+                {t("about.p1").split(/(iniciante|Iniciante|Beginner)/).map((part, i) => 
+                  part.toLowerCase() === "iniciante" || part === "Beginner" ? (
                     <span key={i} className="text-ember font-bold">{part}</span>
                   ) : (
                     part
