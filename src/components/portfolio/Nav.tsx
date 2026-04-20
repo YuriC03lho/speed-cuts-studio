@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
+  { label: "Início", href: "#home" },
+  { label: "Sobre", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Social", href: "#social" },
+  { label: "Projetos", href: "#projects" },
+  { label: "Redes", href: "#social" },
 ];
 
 export const Nav = () => {
@@ -28,7 +28,6 @@ export const Nav = () => {
       }`}
     >
       <div className="container flex items-center justify-between">
-        {/* Monogram */}
         <a href="#home" className="flex items-center gap-3 group">
           <div className="w-10 h-10 bg-foreground text-background flex items-center justify-center font-display text-lg shadow-brutal-sm group-hover:bg-ember transition-colors">
             YC
@@ -39,7 +38,6 @@ export const Nav = () => {
           </div>
         </a>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
           {links.map((l, i) => (
             <a
@@ -54,15 +52,11 @@ export const Nav = () => {
           ))}
         </nav>
 
-        <a
-          href="#projects"
-          className="hidden md:inline-flex btn-brutal"
-        >
+        <a href="#projects" className="hidden md:inline-flex btn-brutal">
           <span>Reel 2025</span>
           <span className="text-ember">→</span>
         </a>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setOpen(!open)}
           aria-label="Menu"
@@ -74,7 +68,6 @@ export const Nav = () => {
         </button>
       </div>
 
-      {/* Mobile drawer */}
       {open && (
         <div className="md:hidden border-t border-foreground/10 bg-cream/95 backdrop-blur-md animate-fade-in-up">
           <nav className="container py-6 flex flex-col gap-2">
