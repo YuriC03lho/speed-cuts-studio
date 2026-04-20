@@ -4,8 +4,8 @@ import { Scissors, Music2, Crosshair, Film } from "lucide-react";
 const skills = [
   { icon: Scissors, name: "Edição", level: 95, desc: "Premiere · CapCut", size: "lg", targetId: "03" },
   { icon: Music2, name: "Sound Design", level: 30, desc: "Foley · SFX · Mix", size: "md", targetId: "05" },
-  { icon: Crosshair, name: "GAME EDITS", level: 90, desc: "Sync · Beat drops", size: "lg", targetId: "01" },
-  { icon: Film, name: "Storytelling", level: 90, desc: "Ritmo · Narrativa", size: "md", targetId: "04" },
+  { icon: Crosshair, name: "GAME EDITS", level: 90, desc: "Sync · Beat drops", size: "lg", targetId: "04" },
+  { icon: Film, name: "Storytelling", level: 90, desc: "Ritmo · Narrativa", size: "md", targetId: "05" },
 ];
 
 export const Skills = () => {
